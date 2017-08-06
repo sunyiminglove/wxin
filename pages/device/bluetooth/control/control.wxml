@@ -15,9 +15,21 @@
       </view>
     </scroll-view>
   </view>
-  <view class="connect">
-    {{name}}({{connect}})
-    <switch class="_switch2" bindchange="switch2Change" />
+<view style="padding-top: 20px; "></view>
+<!-- 自动发送回车 -->
+  <view class="container">
+      <text class="left">发送回车</text>
+      <switch class="right" checked  bindchange="switch1Change" />
+  </view>
+
+<!-- 自定义发送 -->
+  <!-- <view class="container">
+    <text class="left">自定义发送</text>
+    <switch class="right" bindchange="switch2Change" />
+  </view> -->
+  <!-- 连接状态 -->
+  <view class="container">
+    <text class="left">{{name}}({{connect}})</text>
   </view>
   <view wx:if="{{display}}">
 

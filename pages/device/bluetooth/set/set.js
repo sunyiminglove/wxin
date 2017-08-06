@@ -10,66 +10,88 @@ Page({
     [
       {
         wid: 1,
-        name: '左旋',
+        name: '左上',
         icon: 'img/1.png',
-        up: 'up1',
-        down: 'down1'
+        up: 'TZ',
+        down: 'ZS'
       },
       {
         wid: 2,
         name: '前进',
         icon: 'img/2.png',
-        up: 'up2',
-        down: 'down2'
+        up: 'TZ',
+        down: 'QJ'
       },
       {
         wid: 3,
-        name: '右旋',
+        name: '右上',
         icon: 'img/3.png',
-        up: 'up3',
-        down: 'down3'
+        up: 'TZ',
+        down: 'YS'
       },
       {
         wid: 4,
         name: '左移',
         icon: 'img/4.png',
-        up: 'up4',
-        down: 'down4'
+        up: 'TZ',
+        down: 'ZY'
       },
       {
         wid: 5,
         name: '停止',
         icon: 'img/5.png',
-        up: 'up5',
-        down: 'down5'
+        up: 'TZ',
+        down: 'TZ'
       },
       {
         wid: 6,
         name: '右移',
         icon: 'img/6.png',
-        up: 'up6',
-        down: 'down6'
+        up: 'TZ',
+        down: 'YY'
       },
       {
         wid: 7,
-        name: '学习',
+        name: '左下',
         icon: 'img/7.png',
-        up: 'up7',
-        down: 'down7'
+        up: 'TZ',
+        down: 'ZX'
       },
       {
         wid: 8,
         name: '后退',
         icon: 'img/8.png',
-        up: 'up8',
-        down: 'down8'
+        up: 'TZ',
+        down: 'HT'
       },
       {
         wid: 9,
-        name: '演示',
+        name: '右下',
         icon: 'img/9.png',
-        up: 'up9',
-        down: 'down9'
+        up: 'TZ',
+        down: 'YX'
+      }
+      ,
+      {
+        wid: 10,
+        name: '左旋',
+        icon: 'img/10.png',
+        up: 'TZ',
+        down: 'ZX'
+      },
+      {
+        wid: 11,
+        name: '演示',
+        icon: 'img/11.png',
+        up: 'TZ',
+        down: 'YS'
+      },
+      {
+        wid: 12,
+        name: '右旋',
+        icon: 'img/12.png',
+        up: 'TZ',
+        down: 'YX'
       }
     ]
     ,

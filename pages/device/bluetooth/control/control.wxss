@@ -1,47 +1,88 @@
 /* pages/device/bluetooth/control/control.wxss */
 @import "../../switch/switch.wxss";
-.input{
-    border: 1px solid gray;
-   padding: 15px;
-   border-radius: 5px;
-   margin-left: 20px;
-   margin-top: 15px;
-   margin-right: 20px;
-   width: auto;
-}
-.index{
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 15px;
+
+.input {
+  border: 1px solid gray;
+  padding: 15px;
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-right: 20px;
+  width: auto;
 }
 
-.button{
+.index {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+}
+
+.button {
   margin-bottom: 20px;
   margin-right: 20px;
   display: flex;
   width: auto;
   flex-direction: column;
-   align-content: right;
-   align-self: right;
+  align-content: right;
+  align-self: right;
 }
-._text{
+
+._text {
   margin-left: 20px;
   margin-top: 25px;
   margin-bottom: 10px;
 }
-._switch{
+
+._switch {
   float: right;
   margin-right: 20px;
 }
-._switch2{
+
+._switch2 {
   float: right;
   margin-right: 20px;
 }
-.message{
+
+.message {
   text-align: center;
   font-size: 25px;
 }
-.connect{
+
+/* .connect {
   margin-top: 30px;
   margin-left: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
+
+.floatr{
+  float: right;
+} */
+
+.container {
+  margin-left: 5%;
+  margin-right:2%; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.left {
+  font-family: "黑体";
+  color:black;
+  font-size: 40rpx;
+}
+
+.right {
+  font-family: "楷体";
+  color: #ff0000;
+  font-size: 80rpx;
 }
