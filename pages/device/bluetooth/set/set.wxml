@@ -1,0 +1,19 @@
+<!--pages/device/bluetooth/set/set.wxml-->
+
+<view class=" contain ">
+  <text bindtap="btn_select">设置遥控器{{select}}</text>
+  <view class="mode ">
+    <input class="input" disabled='{true}' value="编号 " />
+    <input class="input" disabled='{true}' value="名称 " />
+    <input class="input" disabled='{true}' value="按下 " />
+    <input class="input" disabled='{true}' value="抬起 " />
+  </view>
+  <view wx:for="{{item}}" wx:key="{{wid}}">
+    <view class="mode" id="{{item.wid}}">
+      <input class="input" disabled='{true}' value="{{item.wid}}" />
+      <input class="input" bindinput="bindname" id="{{item.wid}}" value="{{item.name}}"/>
+      <input class="input" bindinput="binddown" id="{{item.wid}}" value="{{item.down}}"/>
+      <input class="input " bindinput="bindup" id="{{item.wid}}" value="{{item.up}}"/>
+    </view>
+  </view>
+</view>

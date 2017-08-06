@@ -1,0 +1,26 @@
+<!--switch.wxml-->
+<import src="cell.wxml" /> 
+<view class="pages-container"> 
+ <scroll-view scroll-y="true" class="pages-wrapper" > 
+  <view wx:for="{{pageItems}}" wx:key="{{text}}"> 
+   <view class="pages-row"> 
+    <template is="cell" data="{{...item[0]}}" />
+    <template is="cell" data="{{...item[1]}}" />
+    <template is="cell" data="{{...item[2]}}" />
+   </view>
+  </view>
+ </scroll-view>
+</view> 
+
+<view class="section section_gap">
+  <view class="body-view">
+   R: <slider bindchange="sliderChange" id="c1" value="100" min="0" max="255" show-value/>
+  </view>
+  <view class="body-view">
+   G: <slider bindchange="sliderChange" id="c2" value="100" min="0" max="255" show-value/>
+  </view>
+  <view class="body-view">
+   B: <slider bindchange="sliderChange" id="c3" value="100" min="0" max="255" show-value/>
+  </view>
+  <text>{{color}}</text>
+</view>

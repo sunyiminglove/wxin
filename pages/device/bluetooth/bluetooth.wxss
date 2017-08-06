@@ -1,0 +1,70 @@
+/* pages/device/bluetooth/bluetooth.wxss */
+
+.index {
+  /*padding-left: 10px;
+    padding-right: 10px;*/
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.boxshadow {
+  -webkit-box-shadow: 3px 3px 3px rgba(100, 100, 80, 0.8);
+  -moz-box-shadow: 3px 3px 3px rgba(100, 100, 80, 0.8);
+  box-shadow: 3px 3px 3px rgba(100, 100, 80, 0.8);
+}
+
+.head {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  text-align: center;
+  /*margin-bottom: 20px;*/
+  background-color: orange;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.mode {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background-color: #e8e8e8;
+  margin-left: 10px;
+  margin-right: 10px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
+
+.listview {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  padding-top: 3px;
+  line-height: 1.2em;
+  font-size: 13px;
+  padding-right: 80px;
+}
+
+.rssi {
+  padding-top: 2px;
+  float: right;
+  display: flex list-item;
+}
+
+.rssi_img {
+  float: right;
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}

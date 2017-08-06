@@ -1,0 +1,73 @@
+/**index.wxss**/
+
+.index-content {
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.index-swiper {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.index-text {
+  /*padding-top: 15px;*/
+  text-indent: 2em;
+  line-height: 1.7em;
+}
+
+.index-news {
+  padding-top: 15px;
+  text-indent: 2em;
+}
+
+
+.list-bd {
+  /*padding: 10px 15px;*/
+  padding-top: 8px;
+  padding-bottom: 8px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  /*-webkit-box-align: center;*//*-webkit-align-items: center;
+          align-items: center;*/
+}
+
+/*横线*/
+
+.list-bd:before {
+  content: " ";
+  position: absolute;
+  left: 0px;
+  top: 0;
+  right: 10px;
+  height: 1px;
+  border-top: 1rpx dashed  #d9d9d9;
+  color: #d9d9d9;
+}
+.list-info {
+  /*padding-left: 12px;*/
+  display: flex list-item;
+  /*align-items: center;*/
+}
+
+.index-pic {
+  /*text-align: center;*/
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+}
+
+.index-time {
+  font-size: 13px;
+  padding-top: 5px;
+  color: gray;
+  position: relative;
+}
+
+/*page{
+  background-color: lightgray;
+}*/

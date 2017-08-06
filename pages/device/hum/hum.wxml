@@ -1,0 +1,11 @@
+<view class="hum_container" wx:for="{{list}}"wx:key="id">
+  <text class="hum_name">
+    {{item.name}}
+  </text>
+  <text class="hum_heat">
+    浏览:{{item.heat}}
+  </text>
+  <text class="hum_text">
+    {{item.data}}
+  </text>
+</view>

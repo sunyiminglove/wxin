@@ -1,0 +1,38 @@
+<!--pages/device/bluetooth/control/control.wxml-->
+<import src="../../switch/cell.wxml" />
+<view class="index">
+  <view class="message">
+    <text bindtap="btn_select">(遥控{{select}})</text>{{message}}
+  </view>
+  <view class="pages-container">
+    <scroll-view scroll-y="true" class="pages-wrapper">
+      <view wx:for="{{pageItems}}" wx:key="{{text}}">
+        <view class="pages-row">
+          <template is="cell" data="{{...item[0]}}" />
+          <template is="cell" data="{{...item[1]}}" />
+          <template is="cell" data="{{...item[2]}}" />
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="connect">
+    {{name}}({{connect}})
+    <switch class="_switch2" bindchange="switch2Change" />
+  </view>
+  <view wx:if="{{display}}">
+
+    <view class="_text">
+      <!--<view class="">name:{{name}}</view>
+    <view class="">deviceId:{{deviceId}}</view>
+    <view class="">信号强度:{{RSSI}}</view>
+    <view class="">serviceId:{{serviceId}}</view>
+    <view class="">characteristicId:{{characteristicId}}</view>-->
+    </view>
+    <view>
+      <textarea class="input" bindinput="bindKeyusername" />
+    </view>
+    <view class="_text">
+      <button class="button" bindtap="btn_send">发送</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,17 @@
+
+<!--device.wxml-->
+<view class="index-hd">
+  <!--<image class="index-logo" src="../../img/devicelogo.png"></image>-->
+  <view class="index-desc">全部设备</view>
+</view>
+  <view class="index-bd">
+      <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+        <view class="kind-list-item">
+          <!--定义菜单-->
+          <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+            <view class="kind-list-text">{{item.name}}</view>
+            <image class="kind-list-img" src="img/{{item.id}}.png"></image>
+          </view>
+        </view>
+      </block>
+  </view>

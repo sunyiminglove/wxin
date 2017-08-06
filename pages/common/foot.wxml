@@ -1,0 +1,6 @@
+<template name="foot">
+  <navigator class="page-foot" openType="switchTab" url="/index/index" hover-class="none">
+  <text class="icon-foot" >www.smtvocie.com</text>
+    <!--<image class="icon-foot" src="../../../../image/icon_foot.png"></image>-->
+  </navigator>
+</template>

@@ -1,0 +1,23 @@
+.news-content {
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.news-text {
+  /*padding-top: 15px;*/
+  text-indent: 2em;
+  line-height: 1.7em;
+}
+
+.news-time {
+  font-size: 12px;
+  color: gray;
+  line-height: 1.6em;
+}
+
+.news-title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 0.7em;
+  padding-top: 20px;
+}

@@ -1,0 +1,10 @@
+<view class="gps-container" wx:for="{{list}}"wx:key="id">
+  <text class="gps_name">
+    {{item.name}}
+  </text>
+  <text class="gps_heat">
+   浏览:{{item.heat}}
+  </text>
+  <map class="gps_map" style="width: 90%; height: 140px;" latitude="{{item.latitude}}" longitude="{{item.longitude}}" markers="{{item.markers}}" scale='17'>
+  </map>
+</view>

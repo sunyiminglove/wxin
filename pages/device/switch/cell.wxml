@@ -1,0 +1,10 @@
+<template name="cell">
+  <view class="pages-item" id="{{wid}}" bindtouchstart="kindToggle" bindtouchend="kindtocchend">
+    <view>
+      <image src="{{icon}}" class="pages-icon"></image>
+    </view>
+    <view >
+      <text class="pages-text">{{name}}</text>
+    </view>
+  </view>
+</template>

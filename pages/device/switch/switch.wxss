@@ -1,0 +1,38 @@
+.pages-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  /*padding-left: 15px;*/
+}
+
+.pages-title-bg {
+  width: 100%;
+}
+
+.pages-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.pages-item {
+  position: relative;
+  padding: 10rpx;
+  width: 33%;
+  background-color: #fff;
+  /*border: #ddd solid 1px; */
+   text-align: center;
+}
+
+.pages-icon {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.pages-text {
+  font-weight: bolder;
+}

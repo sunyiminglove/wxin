@@ -1,0 +1,20 @@
+.hum_container {
+  padding-left: 30px;
+}
+
+.hum_text {
+  padding-bottom: 5px;
+}
+
+.hum_name {
+  text-indent: 2em;
+  line-height: 1.2em;
+  padding-bottom: 5px;
+}
+
+.hum_heat {
+  font-size: 12px;
+  color: gray;
+  line-height: 1.2em;
+  padding-bottom: 5px;
+}

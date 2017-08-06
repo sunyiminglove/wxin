@@ -1,0 +1,35 @@
+
+<!--index.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<view class="index-content">
+
+  <!--轮播图-->
+  <view class="index-swiper">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="*this" >
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="355" height="150" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!--欢迎语-->
+  <view class="index-text">
+    <template is="wxParse" data="{{wxParseData:describe.nodes}}" />
+  </view>
+<view>
+</view>
+  <!--新闻动态-->
+  <view>
+    <block wx:for="{{news}}" wx:key="*this" >
+      <view class="list-bd" bindtap="bindViewTap" id="{{item.id}}">
+        <image class="index-pic" src="img/ari.png" mode="scaleToFill" ></image>
+        <view class="list-info">
+          <view>{{item.title}}</view>
+          <view class="index-time">{{item.dates}} </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

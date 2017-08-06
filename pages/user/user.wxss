@@ -1,0 +1,86 @@
+@import "../common/lib/weui.wxss";
+@import "../device/device.wxss";
+
+.user-index {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 30px;
+}
+
+.login {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 30px;
+}
+
+.input {
+  border: 1px solid gray;
+  margin-bottom: 20px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.text {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 20px;
+  line-height: 30px;
+}
+
+.butt {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.tip {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  line-height: 30px;
+  text-indent: 2em;
+}
+
+.headimag {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.ask {
+  margin-top: 100px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  background-color: orange;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 20px;
+}
+
+.input {
+  margin-left: 35px;
+  margin-right: 35px;
+  margin-bottom: 20px;
+  background-color: lightgray;
+}
+
+.title{
+  font-size: 25px;
+  text-align: center;
+  margin: 40px;
+}
+
+.logout{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.info{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}

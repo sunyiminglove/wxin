@@ -1,0 +1,11 @@
+<view class="temper_container" wx:for="{{list}}" wx:key="id">
+  <text class="temper_name">
+    {{item.name}}
+  </text>
+  <text class="temper_heat">
+    浏览:{{item.heat}}
+  </text>
+  <text class="temper_text">
+    {{item.data}}
+  </text>
+</view>

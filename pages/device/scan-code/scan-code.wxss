@@ -1,0 +1,36 @@
+.contain{
+ margin-top: 10px;
+ margin-left: 20px;
+ margin-right: 20px;
+ text-align: center;
+}
+
+.input{
+    border: 1px solid gray;
+   margin-bottom: 10px;
+   padding: 5px;
+   border-radius: 5px;
+   width: 96%;
+   font-size: 22px;
+   text-align: left;
+   height: 45px;
+}
+.input2{
+   border: 1px solid gray;
+   margin-bottom: 10px;
+   padding: 5px;
+   border-radius: 5px;
+   width: 96%;
+   font-size: 45px;
+   text-align: center;
+   height: 60px;
+}
+.btn{
+  margin-bottom: 20px;
+   padding: 5px;
+   width: 100%;
+   /*margin: 10px;*/
+}
+.text{
+  margin-bottom: 15px;
+}

@@ -1,0 +1,11 @@
+<view class="pm_container" wx:for="{{list}}"wx:key="id">
+  <text class="pm_name">
+    {{item.name}}
+  </text>
+  <text class="pm_heat">
+    浏览:{{item.heat}}
+  </text>
+  <text class="pm_text">
+    {{item.data}}
+  </text>
+</view>

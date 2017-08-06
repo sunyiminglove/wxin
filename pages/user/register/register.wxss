@@ -1,0 +1,8 @@
+/* pages/user/register/register.wxss */
+@import "../user.wxss";
+.btn {
+  background-color: orange;
+   margin-left: 35px;
+  margin-right: 35px;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,20 @@
+.gps-container {
+  padding-left: 30px;
+}
+
+.gps-map {
+  padding-bottom: 5px;
+}
+
+.gps_name {
+  text-indent: 2em;
+  line-height: 1.2em;
+  padding-bottom: 5px;
+}
+
+.gps-heat {
+  font-size: 12px;
+  color: gray;
+  line-height: 1.2em;
+  padding-bottom: 5px;
+}

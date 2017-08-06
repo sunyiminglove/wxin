@@ -1,0 +1,36 @@
+<!--user.wxml-->
+<view wx:if="{{dis}}">
+  <view class="ask">
+    <view class="title">
+      <text>登录&注册</text>
+    </view>
+    <button class="btn" bindtap="bindregister">注册</button>
+    <button class="btn" bindtap="bindlogin">登录</button>
+  </view>
+</view>
+<view wx:else>
+  <view class="user-index">
+    <!--本站用户信息-->
+    <view class="kind-list-item">
+      <view id="1" class="kind-list-item-hd" bindtap="kindToggle">
+        <image class="headimag" src="{{user.head}}"></image>
+        <view class="kind-list-text">{{user.username}}</view>
+      </view>
+    </view>
+    <view class="kind-list-item">
+      <view class="info"> 手机号：{{user.phonenumber}}</view>
+    </view>
+    <view class="kind-list-item">
+      <view class="info">Email：{{user.email}}</view>
+    </view>
+    <view class="kind-list-item">
+      <view class="info">Address：{{user.address}}</view>
+    </view>
+    <view class="kind-list-item">
+      <view class="info">QQ：{{user.qq}}</view>
+    </view>
+    <view class="kind-list-item" bindtap="bindlogout">
+      <view class="logout"> 退出登陆 </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+<view class="contain">
+<view class="text">已共享：{{count}}</view>
+  <textarea disabled="{{true}}" class="input" placeholder="{{resault}}" />
+  <input class="input2" bindinput="bindKeyusername" value="{{note}}" placeholder="添加备注" />
+  <button type="primary" class="btn" bindtap="scanCode">扫一扫</button>
+  <button type="primary" class="btn" bindtap="btnsave">共　享</button>
+</view>

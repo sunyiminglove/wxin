@@ -1,0 +1,11 @@
+<view class="news-content">
+  <view class="news-title">{{list.title}} </view>
+  <view class="news-time">极客物联网:{{list.datetime}} </view>
+  <view class="news-time">浏览：{{list.hit}} </view>
+</view>
+<import src="../../../wxParse/wxParse.wxml" />
+<view class="news-content">
+  <view class="news-text">
+    <template is="wxParse" data="{{wxParseData:news.nodes}}" />
+  </view>
+</view>

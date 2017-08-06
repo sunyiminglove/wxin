@@ -1,0 +1,9 @@
+<!--pages/user/login/login.wxml-->
+<view class="title">
+  <text>登录</text>
+</view>
+<view class="content">
+    <input class="input" bindinput="bindKeyusername" placeholder="用户名" />
+    <input class="input" bindinput="bindKeypassword" password="true" placeholder="密码" />
+    <button class="btn" bindtap="bindload">登陆</button>
+</view>

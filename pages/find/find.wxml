@@ -1,0 +1,19 @@
+
+<!--find.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+
+ <view class="find-text">
+    <template is="wxParse" data="{{wxParseData:describe.nodes}}" />
+  </view>
+<view class="find-body">
+  <block wx:for="{{list}}" wx:key="*this">
+    <view class="list-bd" bindtap="bindViewTap" id="{{item.id}}">
+      <image class="find-pic" src="{{item.pic}}" mode="scaleToFill"></image>
+      <view class="list-info">
+        <view>{{item.title}}</view>
+        <view class="find-time">{{item.userid}}</view>
+        <view class="find-time">{{item.dates}} </view>
+      </view>
+    </view>
+  </block>
+</view>

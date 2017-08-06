@@ -1,0 +1,57 @@
+/* pages/device/device.wxss */
+@import "../common/lib/weui.wxss";
+
+.find-title {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0.6rem;
+}
+
+.find-pic {
+  /*text-align: center;*/
+  width: 80px;
+  height: 60px;
+  background-color: #eee;
+}
+
+.find-time {
+  font-size: 13px;
+  color: gray;
+  position: relative;
+}
+
+.list-info {
+  padding-left: 12px;
+  display: flex list-item;
+  /*align-items: center;*/
+}
+
+.list-bd {
+  padding: 10px 15px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  /*-webkit-box-align: center;*//*-webkit-align-items: center;
+          align-items: center;*/
+}
+
+/*横线*/
+
+.list-bd:before {
+  content: " ";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  right: 10px;
+  height: 1px;
+  border-top: 1rpx solid #d9d9d9;
+  color: #d9d9d9;
+}
+
+.find-text {
+  padding: 15px;
+  text-indent: 2em;
+  line-height: 1.7em;
+}
