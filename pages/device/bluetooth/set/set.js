@@ -139,6 +139,11 @@ Page({
 
   },
 
+  //下拉刷新
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh()
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

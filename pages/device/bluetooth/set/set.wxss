@@ -1,29 +1,33 @@
 /* pages/device/bluetooth/set/set.wxss */
-
 .input {
   float: left;
   border: 1px solid gray;
   padding: 2%;
   border-radius: 5px;
-  margin-left: 3%;
+  /* margin-left: center;  */
   margin-top: 15px;
-  /*margin-right:3%;*/
-  margin-bottom: 2px;
-  width: 60px;
-  font-size: 18px;
-  background-color: lightgray;
+  /*设置宽度为百分比时，不能用width，会出现显示不全*/
+  max-width: 19%;
+  font-size: 100%;
+  background-color: lavenderblush;
   color: black;
 }
 
+.pages-row {
+  /* width: 100%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
-.mode {
-  text-align: center;
+.title_background-color {
+  background-color: lightgray;
 }
 
 .contain {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 3%;
+  margin-right: 3%;
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
