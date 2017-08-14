@@ -36,7 +36,7 @@ Page({
 
 function load(that) {
   var that = that
-  request('https://smtvoice.com/bloglist.php?type=find', function (res) {
+  request(app.api_host+'bloglist.php?type=find', function (res) {
     list = res.data.list
     console.log('diy：', list)
     //更新数据
@@ -45,7 +45,7 @@ function load(that) {
     })
   })
   //加载描述
-  request('https://smtvoice.com/info.php?type=wxin_find_des', function (res) {
+  request(app.api_host+'info.php?type=wxin_find_des', function (res) {
     console.log('describe:', res)
     // console.log(JSON.stringify(res.data, ' ', ' '));
     WxParse.wxParse('describe', 'html', res.data.list[0].content, that, 5);

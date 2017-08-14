@@ -99,7 +99,7 @@ function load(that) {
   })
   if (app.user)//登陆过
   {
-    myfunction.request('https://smtvoice.com/login.php?username=' + app.user.username + '&password=' + app.user.password, function (res) {
+    myfunction.request(app.api_host+'login.php?username=' + app.user.username + '&password=' + app.user.password, function (res) {
       console.log(res)
       if (res.data.status == 'success') {
         console.log(res.data)

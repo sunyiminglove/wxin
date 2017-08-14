@@ -1,5 +1,3 @@
-
-
 Page({
   data: {
     list: [
@@ -64,16 +62,8 @@ Page({
   ,
   //下拉刷新
   onPullDownRefresh: function () {
-    var that = this
     wx.stopPullDownRefresh()
-    load(that);
   },
   onLoad: function () {
-    var that = this
   }
 })
-
-//加载数据
-function load(that) {
-
-}

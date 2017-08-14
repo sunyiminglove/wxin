@@ -26,7 +26,7 @@ Page({
   bindload: function (e) {
     console.log('登陆按钮按下')
     var that = this
-    myfunction.request('https://smtvoice.com/login.php?username=' + inputusername + '&password=' + inputpassword, function (res) {
+    myfunction.request(app.api_host+'login.php?username=' + inputusername + '&password=' + inputpassword, function (res) {
       console.log(res)
       if (res.data.status == 'success') {
         console.log(res.data)

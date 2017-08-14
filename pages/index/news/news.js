@@ -18,7 +18,7 @@ Page({
     console.log('news load options：', options)
     var id = options.id
     var that = this
-    request('https://smtvoice.com/blog.php?id=' + id, function (res) {
+    request(app.api_host+'blog.php?id=' + id, function (res) {
       var data = res.data
       list = res.data
       console.log('news load diy：', data)
@@ -33,7 +33,7 @@ Page({
     console.log('news load options：', options)
     var id = options.id
     var that = this
-    request('https://smtvoice.com/blog.php?id=' + id, function (res) {
+    request(app.api_host+'blog.php?id=' + id, function (res) {
       var data = res.data
       list = res.data
       //  console.log(JSON.stringify(res.data, ' ', ' '));

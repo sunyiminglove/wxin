@@ -46,7 +46,7 @@ function load(that) {
   var that = that;
   var imgUrls = [];
   //加载轮播图
-  request('https://smtvoice.com/info.php?type=wxin_swiper', function (res) {
+  request(app.api_host+'info.php?type=wxin_swiper', function (res) {
     console.log('swiper:', res)
     for (var i = 0; i < res.data.num; i++) {
       imgUrls = imgUrls.concat(res.data.list[i].content)
@@ -59,14 +59,14 @@ function load(that) {
     })
   })
   //加载描述
-  request('https://smtvoice.com/info.php?type=wxin_home_des', function (res) {
+  request(app.api_host+'info.php?type=wxin_home_des', function (res) {
     console.log('describe:', res)
     // console.log(JSON.stringify(res.data, ' ', ' '));
     WxParse.wxParse('describe', 'html', res.data.list[0].content, that, 5);
   })
 
   //加载新闻列表
-  request('https://smtvoice.com/bloglist.php?type=news', function (res) {
+  request(app.api_host+'bloglist.php?type=news', function (res) {
     var news = res.data.list
     console.log('news：', news)
     // console.log(JSON.stringify(res.data, ' ', ' '));

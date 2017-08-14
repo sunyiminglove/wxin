@@ -17,7 +17,7 @@ Page({
   onPullDownRefresh: function () {
     wx.stopPullDownRefresh()
     var that = this
-      request('https://smtvoice.com/blog.php?id=' + id, function (res) {
+      request(app.api_host+'blog.php?id=' + id, function (res) {
       var data = res.data
       list = res.data
       //  console.log(JSON.stringify(res.data, ' ', ' '));
@@ -33,7 +33,7 @@ Page({
     console.log('play load options：', options)
     id = options.id
     var that = this
-    request('https://smtvoice.com/blog.php?id=' + id, function (res) {
+    request(app.api_host+'blog.php?id=' + id, function (res) {
       var data = res.data
       list = res.data
       //  console.log(JSON.stringify(res.data, ' ', ' '));

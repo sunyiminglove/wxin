@@ -19,7 +19,7 @@ Page({
     var that = this
     console.log('userinfo:',app.userinfo)
     //在服务器获取响应结果
-    myfunction.request('https://smtvoice.com/scancode.php?type=getnum', function (res) {
+    myfunction.request(app.api_host+'scancode.php?type=getnum', function (res) {
       console.log(res)
       if (res.data.status == 'ok') {
         that.setData({
@@ -35,7 +35,7 @@ Page({
     var that = this
     wx.stopPullDownRefresh()
     //在服务器获取响应结果
-    myfunction.request('https://smtvoice.com/scancode.php?type=getnum', function (res) {
+    myfunction.request(app.api_host+'scancode.php?type=getnum', function (res) {
       console.log(res)
       if (res.data.status == 'ok') {
         that.setData({
@@ -57,7 +57,7 @@ Page({
           resault: resault
         })
         //在服务器获取响应结果
-        myfunction.request('https://smtvoice.com/scancode.php?type=get&text=' + resault, function (res) {
+        myfunction.request(app.api_host+'scancode.php?type=get&text=' + resault, function (res) {
           console.log(res)
           if (res.data.status == 'ok') {
             note = res.data.note
@@ -96,7 +96,7 @@ Page({
   btnsave: function (res) {
     if (resault != null) {
       //保存到服务器
-      myfunction.request('https://smtvoice.com/scancode.php?type=set&text=' + resault + '&note=' + note + '&nick=' + app.userinfo.nickName, function (res) {
+      myfunction.request(app.api_host+'scancode.php?type=set&text=' + resault + '&note=' + note + '&nick=' + app.userinfo.nickName, function (res) {
 
         console.log(res)
         if (res.data.status == 'ok') {

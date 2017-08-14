@@ -1,8 +1,4 @@
-
-
 App({
-
-
   onLaunch: function () {
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
@@ -42,5 +38,6 @@ App({
     loginCode: null,
     openid: null,//
     user:null//用户登陆信息
-  }
+  },
+  api_host:'https://smtvoice.com/api/'//服务器api
 })

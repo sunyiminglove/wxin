@@ -22,7 +22,7 @@
 </view>
   <!--新闻动态-->
   <view>
-    <block wx:for="{{news}}" wx:key="*this" >
+    <block wx:for="{{news}}" wx:key="id" >
       <view class="list-bd" bindtap="bindViewTap" id="{{item.id}}">
         <image class="index-pic" src="img/ari.png" mode="scaleToFill" ></image>
         <view class="list-info">

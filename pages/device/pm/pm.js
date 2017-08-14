@@ -36,7 +36,7 @@ function load(that) {
     })
   }
   else {
-    myfunction.request('https://smtvoice.com/device.php?device=sensor&type=getlist&sensor=pm2.5&userid=' + app.user.username + '&password=' + app.user.password, function (res) {
+    myfunction.request(app.api_host+'device.php?device=sensor&type=getlist&sensor=pm2.5&userid=' + app.user.username + '&password=' + app.user.password, function (res) {
       var list = res.data.list;
      
       console.log('temperature', list)

@@ -94,7 +94,7 @@ Page({
   bindregister: function (res) {
     console.log('注册', res)
     var that = this
-    var str = 'https://smtvoice.com/register.php?username=' + inputusername + '&password=' + inputpassword + '&confirm=' + inputconfirm + '&email=' + inputemail
+    var str = app.api_host+'register.php?username=' + inputusername + '&password=' + inputpassword + '&confirm=' + inputconfirm + '&email=' + inputemail
     console.log(str)
     myfunction.request(str, function (res) {
       console.log(res)
