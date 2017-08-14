@@ -1,11 +1,14 @@
 // pages/device/bluetooth/control/control.js
 var name
+var sendbusy = false //蓝牙发送忙状态
 var deviceId
 var serviceId
 var characteristicId
 var sendtext
 var platform
 var switch1='true'
+var connetTimer //计时器变量
+var SearchCycle = 1000 //蓝牙搜索周期
 var select//读取选择的遥控器
 var PageItems =
   [
@@ -172,9 +175,16 @@ Page({
       console.log(`device ${res.deviceId} state has changed, connected: ${res.connected}`)
       if (res.connected == false) {
         that.setData({ connect: '已断开' })
+        //启动定时重新连接
+        setTimeout(function () {
+              //启动定时器，开始重新连接蓝牙
+              connetTimer = setInterval(function () { ReapConnect(that) }, SearchCycle)
+            }, 1000)
       }
       else {
-        that.setData({ connect: '连接' })
+        that.setData({ connect: '已连接' })
+        //关闭计时器
+        clearInterval(connetTimer)
       }
     })
     wx.onBLECharacteristicValueChange(function (res) {
@@ -205,73 +215,7 @@ Page({
         platform = res.platform
 
         // 连接蓝牙
-        wx.createBLEConnection({
-          deviceId: deviceId,
-          success: function (res) {
-            console.log('连接蓝牙', res)
-            //蓝牙连接成功
-            wx.getBLEDeviceServices({
-              deviceId: deviceId,
-              success: function (res) {
-                //设备服务获取成功
-                console.log('device services:', res)
-                if (platform == 'ios') {
-                  serviceId = res.services[1].uuid
-                  console.log('iso')
-                }
-                else {
-                  serviceId = res.services[0].uuid
-                  console.log('android')
-                }
-                that.setData({ serviceId: serviceId })
-                setTimeout(function () {
-                  wx.getBLEDeviceCharacteristics({
-                    deviceId: deviceId,
-                    serviceId: serviceId,
-                    success: function (res) {
-                      that.setData({
-                        connect: "已连接"
-                      })
-                      console.log('device getBLEDeviceCharacteristics:', res)
-                      characteristicId = res.characteristics["0"].uuid
-                      that.setData({ characteristicId: characteristicId })
-                      wx.notifyBLECharacteristicValueChange({
-                        state: true, // 启用 notify 功能
-                        // 这里的 deviceId 需要在上面的 getBluetoothDevices 或 onBluetoothDeviceFound 接口中获取
-                        deviceId: deviceId,
-                        // 这里的 serviceId 需要在上面的 getBLEDeviceServices 接口中获取
-                        serviceId: serviceId,
-                        // 这里的 characteristicId 需要在上面的 getBLEDeviceCharacteristics 接口中获取
-                        characteristicId: characteristicId,
-                        success: function (res) {
-                          console.log('notifyBLECharacteristicValueChange success', res.errMsg)
-                        }
-                      })
-
-                      wx.onBLECharacteristicValueChange(function (res) {
-                        console.log("characteristic", res)
-                        console.log(`characteristic ${res.characteristicId} has changed, now is ${res.value}`)
-                      })
-                    },
-                    fail: function (res) {
-                      console.log('失败', res)
-                      that.setData({
-                        connect: "连接失败!"
-                      })
-                    }
-                  })
-                }, 1000)
-              }
-            })
-          },
-          fail: function (res) {
-            console.log('蓝牙连接失败', res)
-            that.setData({
-              connect: "连接失败!"
-            })
-          }
-        })
-
+        ReapConnect(that)
       }
     })
   },
@@ -296,8 +240,6 @@ Page({
       if (switch1) {
         str = str + "\r\n";
       }
-      console.log(str)      
-      //发送数据
       senddata(str, deviceId, serviceId, characteristicId)
       this.setData({
         message: PageItems[e.currentTarget.id - 1].down,
@@ -316,10 +258,27 @@ Page({
       var str = PageItems[e.currentTarget.id - 1].up
       if (switch1) {
         str = str + "\r\n";
-      }
-      console.log(str)
-      //发送数据
-      senddata(str, deviceId, serviceId, characteristicId)
+        }
+      // }
+     //发送数据
+     console.log('sendbusy:',sendbusy)
+      if (sendbusy) {
+        var timer
+        setTimeout(function() {
+        timer = setInterval(function () { 
+          console.log('等待重发')
+          if (!sendbusy) {
+              senddata(str, deviceId, serviceId, characteristicId)
+              //关闭计时器
+              clearInterval(timer)
+            }
+           }, 100)
+          }, 100)
+        }
+        else
+        {
+            senddata(str, deviceId, serviceId, characteristicId)
+        }
       this.setData({
         message: PageItems[e.currentTarget.id - 1].up,
       })
@@ -330,7 +289,7 @@ Page({
     }
   },
 
-  switch2Change: function (e) {
+  switch2Change:function (e) {
     this.setData({
       display: e.detail.value
     })
@@ -355,6 +314,8 @@ Page({
 })
 
 function senddata(str, deviceId, serviceId, characteristicId) {
+  sendbusy = true
+  console.log('sendbusy:',sendbusy)
   var dataview = new DataView(str2ab(str));
   var ints = new Uint8Array(dataview.byteLength);
   for (var i = 0; i < ints.length; i++) {
@@ -369,6 +330,7 @@ function senddata(str, deviceId, serviceId, characteristicId) {
     success: function (res) {
       console.log('writeBLECharacteristicValue success', res.errMsg)
       console.log('发送：', str)
+      sendbusy = false
     }
   })
 }
@@ -454,4 +416,82 @@ function UpdataViewlist(that) {
   that.setData({
     pageItems: pageItems
   })
+}
+
+function ReapConnect(that) {
+  wx.createBLEConnection({
+          deviceId: deviceId,
+          success: function (res) {
+            console.log('连接蓝牙', res)
+            //蓝牙连接成功
+            wx.getBLEDeviceServices({
+              deviceId: deviceId,
+              success: function (res) {
+                //设备服务获取成功
+                console.log('device services:', res)
+                if (platform == 'ios') {
+                  serviceId = res.services[1].uuid
+                  console.log('iso')
+                }
+                else {
+                  serviceId = res.services[0].uuid
+                  console.log('android')
+                }
+                that.setData({ serviceId: serviceId })
+                setTimeout(function () {
+                  wx.getBLEDeviceCharacteristics({
+                    deviceId: deviceId,
+                    serviceId: serviceId,
+                    success: function (res) {
+                      that.setData({
+                        connect: "已连接"
+                      })
+                      console.log('device getBLEDeviceCharacteristics:', res)
+                      characteristicId = res.characteristics["0"].uuid
+                      that.setData({ characteristicId: characteristicId })
+                      wx.notifyBLECharacteristicValueChange({
+                        state: true, // 启用 notify 功能
+                        // 这里的 deviceId 需要在上面的 getBluetoothDevices 或 onBluetoothDeviceFound 接口中获取
+                        deviceId: deviceId,
+                        // 这里的 serviceId 需要在上面的 getBLEDeviceServices 接口中获取
+                        serviceId: serviceId,
+                        // 这里的 characteristicId 需要在上面的 getBLEDeviceCharacteristics 接口中获取
+                        characteristicId: characteristicId,
+                        success: function (res) {
+                          console.log('notifyBLECharacteristicValueChange success', res.errMsg)
+                        }
+                      })
+
+                      wx.onBLECharacteristicValueChange(function (res) {
+                        console.log("characteristic", res)
+                        console.log(`characteristic ${res.characteristicId} has changed, now is ${res.value}`)
+                      })
+                    },
+                    fail: function (res) {
+                      console.log('失败', res)
+                      if (connetTimer) {
+                        that.setData({connect: "努力重连中!"})
+                      }
+                      else
+                      {
+                        that.setData({connect: "连接失败!"})
+                      }
+                      
+                    }
+                  })
+                }, 1000)
+              }
+            })
+          },
+          fail: function (res) {
+            console.log('蓝牙连接失败', res)
+            if (connetTimer) {
+              that.setData({connect: "努力重连中!"})
+            }
+            else
+            {
+              that.setData({connect: "连接失败!"})
+            }
+          }
+        })
 }
