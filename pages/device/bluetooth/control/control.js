@@ -5,7 +5,7 @@ var serviceId
 var characteristicId
 var sendtext
 var platform
-var switch1
+var switch1='true'
 var select//读取选择的遥控器
 var PageItems =
   [
@@ -14,63 +14,72 @@ var PageItems =
       name: '左上',
       icon: 'img/1.png',
       up: 'TZ',
-      down: 'ZS'
+      down: 'ZS',
+      show: 'true'
     },
     {
       wid: 2,
       name: '前进',
       icon: 'img/2.png',
       up: 'TZ',
-      down: 'QJ'
+      down: 'QJ',
+      show: 'true'
     },
     {
       wid: 3,
       name: '右上',
       icon: 'img/3.png',
       up: 'TZ',
-      down: 'YS'
+      down: 'YS',
+      show: 'true'
     },
     {
       wid: 4,
       name: '左移',
       icon: 'img/4.png',
       up: 'TZ',
-      down: 'ZY'
+      down: 'ZY',
+      show: 'true'
     },
     {
       wid: 5,
       name: '停止',
       icon: 'img/5.png',
       up: 'TZ',
-      down: 'TZ'
+      down: 'TZ',
+      show: 'true'
     },
     {
       wid: 6,
       name: '右移',
       icon: 'img/6.png',
       up: 'TZ',
-      down: 'YY'
+      down: 'YY',
+      show: 'true'
     },
     {
       wid: 7,
       name: '左下',
       icon: 'img/7.png',
       up: 'TZ',
-      down: 'ZX'
+      down: 'ZX',
+      show: 'true'
     },
     {
       wid: 8,
       name: '后退',
       icon: 'img/8.png',
       up: 'TZ',
-      down: 'HT'
+      down: 'HT',
+      show: 'true'
     },
     {
       wid: 9,
       name: '右下',
       icon: 'img/9.png',
       up: 'TZ',
-      down: 'YX'
+      down: 'YX',
+      show: 'true'
     }
     ,
     {
@@ -78,21 +87,24 @@ var PageItems =
       name: '左旋',
       icon: 'img/10.png',
       up: 'TZ',
-      down: 'ZX'
+      down: 'ZX',
+      show: 'true'
     },
     {
       wid: 11,
       name: '演示',
       icon: 'img/11.png',
       up: 'TZ',
-      down: 'YS'
+      down: 'YS',
+      show: 'true'
     },
     {
       wid: 12,
       name: '右旋',
       icon: 'img/12.png',
       up: 'TZ',
-      down: 'YX'
+      down: 'YX',
+      show: 'true'
     }
   ]
 Page({
@@ -220,7 +232,6 @@ Page({
                       that.setData({
                         connect: "已连接"
                       })
-
                       console.log('device getBLEDeviceCharacteristics:', res)
                       characteristicId = res.characteristics["0"].uuid
                       that.setData({ characteristicId: characteristicId })
