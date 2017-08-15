@@ -1,5 +1,15 @@
 <!--pages/device/bluetooth/control/control.wxml-->
-<import src="../../switch/cell.wxml" />
+<template name="cell">
+  <view class="pages-item" id="{{wid}}" bindtouchstart="kindToggle" bindtouchend="kindtocchend">
+    <view>
+      <image src="{{icon}}" class="pages-icon"></image>
+    </view>
+    <view wx:if="{{show == true ||show == 'true'}}">
+      <text class="pages-text"> {{name}}</text>
+    </view>
+  </view>
+</template>
+
 <view class="index">
   <view class="message">
     <text bindtap="btn_select">(遥控{{select}})</text>{{message}}
@@ -16,10 +26,12 @@
     </scroll-view>
   </view>
 <view style="padding-top: 20px; "></view>
+
 <!-- 自动发送回车 -->
+<view class="line"></view>
   <view class="container">
       <text class="left">发送回车</text>
-      <switch class="right" checked  bindchange="switch1Change" />
+      <switch class="right" checked  bindchange="switch_enterChange" />
   </view>
 
 <!-- 自定义发送 -->
@@ -28,6 +40,7 @@
     <switch class="right" bindchange="switch2Change" />
   </view> -->
   <!-- 连接状态 -->
+  <view class="line"></view>
   <view class="container">
     <text class="left">{{name}}({{connect}})</text>
   </view>

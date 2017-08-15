@@ -1,4 +1,5 @@
-// pages/device/bluetooth/control/control.js
+var app = getApp()
+var myfunction = require('../../../../utils/myfunction');
 var name
 var sendbusy = false //蓝牙发送忙状态
 var deviceId
@@ -6,10 +7,11 @@ var serviceId
 var characteristicId
 var sendtext
 var platform
-var switch1='true'
+var switch_enter='true'
 var connetTimer //计时器变量
 var SearchCycle = 1000 //蓝牙搜索周期
 var select//读取选择的遥控器
+var flag_onload=false //表示onload了已经执行，不需要再执行onshow
 var PageItems =
   [
     {
@@ -18,7 +20,7 @@ var PageItems =
       icon: 'img/1.png',
       up: 'TZ',
       down: 'ZS',
-      show: 'true'
+      show: true
     },
     {
       wid: 2,
@@ -26,7 +28,7 @@ var PageItems =
       icon: 'img/2.png',
       up: 'TZ',
       down: 'QJ',
-      show: 'true'
+      show: true
     },
     {
       wid: 3,
@@ -34,7 +36,7 @@ var PageItems =
       icon: 'img/3.png',
       up: 'TZ',
       down: 'YS',
-      show: 'true'
+      show: true
     },
     {
       wid: 4,
@@ -42,7 +44,7 @@ var PageItems =
       icon: 'img/4.png',
       up: 'TZ',
       down: 'ZY',
-      show: 'true'
+      show: true
     },
     {
       wid: 5,
@@ -50,7 +52,7 @@ var PageItems =
       icon: 'img/5.png',
       up: 'TZ',
       down: 'TZ',
-      show: 'true'
+      show: true
     },
     {
       wid: 6,
@@ -58,7 +60,7 @@ var PageItems =
       icon: 'img/6.png',
       up: 'TZ',
       down: 'YY',
-      show: 'true'
+      show: true
     },
     {
       wid: 7,
@@ -66,7 +68,7 @@ var PageItems =
       icon: 'img/7.png',
       up: 'TZ',
       down: 'ZX',
-      show: 'true'
+      show: true
     },
     {
       wid: 8,
@@ -74,7 +76,7 @@ var PageItems =
       icon: 'img/8.png',
       up: 'TZ',
       down: 'HT',
-      show: 'true'
+      show: true
     },
     {
       wid: 9,
@@ -82,16 +84,16 @@ var PageItems =
       icon: 'img/9.png',
       up: 'TZ',
       down: 'YX',
-      show: 'true'
+      show: true
     }
     ,
     {
       wid: 10,
-      name: '左旋',
+      name: '左转',
       icon: 'img/10.png',
       up: 'TZ',
-      down: 'ZX',
-      show: 'true'
+      down: 'ZZ',
+      show: true
     },
     {
       wid: 11,
@@ -99,15 +101,15 @@ var PageItems =
       icon: 'img/11.png',
       up: 'TZ',
       down: 'YS',
-      show: 'true'
+      show: true
     },
     {
       wid: 12,
-      name: '右旋',
+      name: '右转',
       icon: 'img/12.png',
       up: 'TZ',
-      down: 'YX',
-      show: 'true'
+      down: 'YZ',
+      show: true
     }
   ]
 Page({
@@ -115,7 +117,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    name: null,
+    name: '无设备',
     deviceId: null,
     serviceId: null,
     characteristicId: null,
@@ -130,8 +132,13 @@ Page({
  */
   onShow: function () {
     var that = this
-    //读取选择的遥控器
-    getSelectIndex(that);
+    console.log("onShow");
+    // 避免重复执行
+    if (!flag_onload) {
+      //读取选择的遥控器
+      getSelectIndex(that);
+    }
+    flag_onload = false;
   },
 
   btn_select: function () {
@@ -170,6 +177,8 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    flag_onload = true;
+    console.log("onLoad");
     wx.onBLEConnectionStateChange(function (res) {
       // 该方法回调中可以用于处理连接意外断开等异常情况
       console.log(`device ${res.deviceId} state has changed, connected: ${res.connected}`)
@@ -194,7 +203,6 @@ Page({
     //读取选择的遥控器
 
     getSelectIndex(that);
-
     name = options.name
     deviceId = options.deviceId
     this.setData({
@@ -224,69 +232,34 @@ Page({
     senddata(sendtext + "\r\n", deviceId, serviceId, characteristicId)
   },
   onPullDownRefresh: function () {
+    var that = this
     wx.stopPullDownRefresh()
+    //读取选择的遥控器
+    getSelectIndex(that);
   },
-  switch1Change: function (e) {
-    console.log('switch1 发生 change 事件，携带值为', e.detail.value)
-    switch1 = e.detail.value
+  /**
+ * 用户点击右上角分享
+ */
+  onShareAppMessage: function () {
+    return {
+      title: 'www.smtvoice.com',
+      path: 'pages/device/bluetooth/control/control'
+    }
+  },
+  switch_enterChange: function (e) {
+    console.log('switch_enter 发生 change 事件，携带值为', e.detail.value)
+    switch_enter = e.detail.value
   },
 
-  //点击事件
+  //按下事件
   kindToggle: function (e) {
-    console.log('按下', e.currentTarget)
-    //没有name属性的认为不需要操作
-    if (PageItems[e.currentTarget.id - 1].name.length > 0) {
-      var str = PageItems[e.currentTarget.id - 1].down
-      if (switch1) {
-        str = str + "\r\n";
-      }
-      senddata(str, deviceId, serviceId, characteristicId)
-      this.setData({
-        message: PageItems[e.currentTarget.id - 1].down,
-      })
-      //震动
-      wx.vibrateShort()
-      //更换图片
-      updataPic(this, e.currentTarget.id - 1, 'img/down.png')
-    }
+    var that = this
+   touch_send(that,'down',e)
   },
-
+  //抬起事件
   kindtocchend: function (e) {
-    console.log('抬起：', e.currentTarget)
-    //没有name属性的认为不需要操作
-    if (PageItems[e.currentTarget.id - 1].name.length > 0) {
-      var str = PageItems[e.currentTarget.id - 1].up
-      if (switch1) {
-        str = str + "\r\n";
-        }
-      // }
-     //发送数据
-     console.log('sendbusy:',sendbusy)
-      if (sendbusy) {
-        var timer
-        setTimeout(function() {
-        timer = setInterval(function () { 
-          console.log('等待重发')
-          if (!sendbusy) {
-              senddata(str, deviceId, serviceId, characteristicId)
-              //关闭计时器
-              clearInterval(timer)
-            }
-           }, 100)
-          }, 100)
-        }
-        else
-        {
-            senddata(str, deviceId, serviceId, characteristicId)
-        }
-      this.setData({
-        message: PageItems[e.currentTarget.id - 1].up,
-      })
-      //震动
-      wx.vibrateShort()
-      //更换图片
-      updataPic(this, e.currentTarget.id - 1, 'img/' + e.currentTarget.id + '.png')
-    }
+    var that = this
+    touch_send(that,'up',e)
   },
 
   switch2Change:function (e) {
@@ -331,7 +304,12 @@ function senddata(str, deviceId, serviceId, characteristicId) {
       console.log('writeBLECharacteristicValue success', res.errMsg)
       console.log('发送：', str)
       sendbusy = false
+    },
+    fail:function(res) {
+      sendbusy = false
+      console.log('发送失败')
     }
+
   })
 }
 
@@ -350,27 +328,55 @@ function str2ab(str) {
   return buf;
 }
 
-function updataPic(that, id, pic) {
-  PageItems[id].icon = pic
-  UpdataViewlist(that)
-}
-
 function updata(that, select) {
   that.setData({ select: select })
-  //读取内存中的遥控器配置
-  wx.getStorage({
-    key: 'selectbluetoothconfig' + select,
-    success: function (res) {
-      PageItems = res.data
-      console.log('本地配置数据：', PageItems)
-      UpdataViewlist(that)
+  if (app.user) {
+    // 获取服务器数据
+  myfunction.request(app.api_host+'bluetooth/config.php?type=get&num='+select+'&userid=' + app.user.username,
+    function (res) {//success
+      var jsonArray =JSON.parse(res.data.item[0]);
+      console.log('jsonArray', jsonArray);
+      PageItems = jsonArray;
+      UpdataViewlist(that);
+      //保存到本地
+      wx.setStorageSync('selectbluetoothconfig' + select, PageItems)
     },
-    fail: function () {
-      console.log('无配置数据')
-      console.log(PageItems)
-      UpdataViewlist(that)
-    }
-  })
+    function (res) {//fail
+      //读取本地配置
+      wx.getStorage({
+        key: 'selectbluetoothconfig' + select,
+        success: function (res) {
+          PageItems = res.data
+          console.log('本地配置数据：', PageItems)
+          UpdataViewlist(that)
+        },
+        fail: function () {
+          console.log('无配置数据')
+          console.log(PageItems)
+          UpdataViewlist(that)
+        }
+      })
+    });
+  }
+  else
+  {
+        //读取本地配置
+      wx.getStorage({
+        key: 'selectbluetoothconfig' + select,
+        success: function (res) {
+          PageItems = res.data
+          console.log('本地配置数据：', PageItems)
+          UpdataViewlist(that)
+        },
+        fail: function () {
+          console.log('无配置数据')
+          console.log(PageItems)
+          UpdataViewlist(that)
+        }
+      })
+  }
+  
+
 }
 
 function getSelectIndex(that) {
@@ -393,14 +399,19 @@ function getSelectIndex(that) {
   })
 }
 
-function UpdataViewlist(that) {
+function UpdataViewlist(that,down=false,id=0) {
   var pageItems = [];
   var row = [];
-  var len = PageItems.length;//重组PageItems  
+  var len = PageItems.length;//
+  var temp_pic =PageItems[id].icon  //图片临时变量
   len = Math.floor((len + 2) / 3) * 3;
-  for (var i = 0; i < len; i++) {
-    //如果Name属性为空，则不显示按键
-    if (PageItems[i].name.length == 0) {
+  // 如果是按下按键，则更改相应图片
+    if (down) {
+      PageItems[id].icon = 'img/down.png';
+    }  
+    for (var i = 0; i < len; i++) {
+    //需要隐藏的按键
+      if (PageItems[i].show == false || PageItems[i].show == 'false') {
       PageItems[i].icon = "img/white.png"
     }
     if ((i + 1) % 3 == 0) {
@@ -413,9 +424,13 @@ function UpdataViewlist(that) {
       row.push(PageItems[i]);
     }
   }
+
   that.setData({
     pageItems: pageItems
   })
+
+  //恢复图片
+  PageItems[id].icon = temp_pic
 }
 
 function ReapConnect(that) {
@@ -432,8 +447,7 @@ function ReapConnect(that) {
                 if (platform == 'ios') {
                   serviceId = res.services[1].uuid
                   console.log('iso')
-                }
-                else {
+                }else {
                   serviceId = res.services[0].uuid
                   console.log('android')
                 }
@@ -472,11 +486,9 @@ function ReapConnect(that) {
                       if (connetTimer) {
                         that.setData({connect: "努力重连中!"})
                       }
-                      else
-                      {
+                      else{
                         that.setData({connect: "连接失败!"})
                       }
-                      
                     }
                   })
                 }, 1000)
@@ -485,13 +497,58 @@ function ReapConnect(that) {
           },
           fail: function (res) {
             console.log('蓝牙连接失败', res)
-            if (connetTimer) {
+            if (connetTimer){
               that.setData({connect: "努力重连中!"})
             }
-            else
-            {
+            else{
               that.setData({connect: "连接失败!"})
             }
           }
         })
+}
+
+//按键发送数据
+function touch_send(that,active,e) {
+  var str
+  if (active=='down') {
+      console.log('按下', e.currentTarget)
+      str = PageItems[e.currentTarget.id - 1].down
+      //更新界面
+      UpdataViewlist(that,true,e.currentTarget.id - 1)
+  }
+  else
+  {
+      console.log('抬起：', e.currentTarget)
+      str = PageItems[e.currentTarget.id - 1].up
+      //更新界面
+      UpdataViewlist(that)
+  }
+
+  if (PageItems[e.currentTarget.id - 1].show == true || PageItems[e.currentTarget.id - 1].show == 'true') {//判断是否需要发送
+      if (switch_enter) {//判断是否需要发送回车
+          str = str + "\r\n";
+        }
+      if (sendbusy) {//忙状态等待发送数据
+        var timer
+        setTimeout(function() {
+          timer = setInterval(function () { 
+              console.log('尝试重发')
+              if (!sendbusy) {
+                senddata(str, deviceId, serviceId, characteristicId)
+                //关闭计时器
+                clearInterval(timer)
+              }
+           }, 100)
+          }, 200)
+        }
+        else
+        {
+          senddata(str, deviceId, serviceId, characteristicId)
+        }
+      that.setData({
+        message: str,
+      })
+      //震动
+      wx.vibrateShort()
+  }
 }

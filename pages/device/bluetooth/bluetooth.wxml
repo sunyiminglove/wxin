@@ -3,18 +3,19 @@
   <view class="head boxshadow">
     <text>附近的低功耗蓝牙设备</text>
   </view>
+  <navigator class="mode boxshadow" url="control/control" hover-class="navigator-hover">控制页面</navigator>
 
   <!--设备列表-->
   <block wx:for="{{list}}" wx:key="item.deviceId">
     <view bindtap="selectDevice" class="mode boxshadow" id="{{index}}">
       <!--<navigator url="{{urlpara}}">-->
       <view class="">
-      <view>{{item.name}}</view>
-      <view class="text">DeviceId:{{item.deviceId}}</view>
-      <view class="text">RSSI:{{item.RSSI}}</view>
+        <view>{{item.name}}</view>
+        <view class="text">DeviceId:{{item.deviceId}}</view>
+        <view class="text">RSSI:{{item.RSSI}}</view>
+      </view>
+      <image class="rssi_img" src="{{imgurl[index]}}"></image>
+      <!--</navigator>-->
     </view>
-    <image class="rssi_img" src="{{imgurl[index]}}"></image>
-    <!--</navigator>-->
-</view>
-</block>
+  </block>
 </view>

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/index/in/in",
     "pages/device/device",
     "pages/logs/logs",
     "pages/find/find",

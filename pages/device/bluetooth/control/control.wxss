@@ -74,7 +74,16 @@
   padding-top: 1%;
   padding-bottom: 1%;
 }
-
+.line{
+  content: " ";
+  /*position: absolute;*/
+  left: 0px;
+  top: 0;
+  right: 10px;
+  height: 1px;
+  border-top: 1rpx dashed  #d9d9d9;
+  color: #d9d9d9;
+}
 .left {
   font-family: "黑体";
   color:black;

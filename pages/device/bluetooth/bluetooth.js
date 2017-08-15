@@ -1,4 +1,4 @@
-// pages/device/bluetooth/bluetooth.js
+var app = getApp()
 var list
 var updataInter //计时器handle变量
 var SearchCycle = 1000 //蓝牙搜索周期
@@ -22,6 +22,21 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+     if(!app.user) {
+        //不是是登陆状态
+        console.log('不是是登陆状态')
+        wx.showModal({
+        title: '温馨提示:',
+        content: '登陆后可上传至服务器！',
+        success: function(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+      }
     setTimeout(function () {
       wx.openBluetoothAdapter({
         success: function (res) {
