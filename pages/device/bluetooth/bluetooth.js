@@ -27,7 +27,7 @@ Page({
         console.log('不是是登陆状态')
         wx.showModal({
         title: '温馨提示:',
-        content: '登陆后可上传至服务器！',
+        content: '注册登陆后可与服务器同步配置！',
         success: function(res) {
           if (res.confirm) {
             console.log('用户点击确定')
