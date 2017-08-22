@@ -12,7 +12,7 @@
  </scroll-view>
 </view> 
 
-<view class="section section_gap">
+<!-- <view class="section section_gap">
   <view class="body-view">
    R: <slider bindchange="sliderChange" id="c1" value="100" min="0" max="255" show-value/>
   </view>
@@ -23,4 +23,4 @@
    B: <slider bindchange="sliderChange" id="c3" value="100" min="0" max="255" show-value/>
   </view>
   <text>{{color}}</text>
-</view>
+</view> -->
