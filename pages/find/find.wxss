@@ -17,8 +17,9 @@
 
 .find-time {
   font-size: 13px;
-  color: gray;
+  color: darkgray;
   position: relative;
+  margin-top: 5px;
 }
 
 .list-info {

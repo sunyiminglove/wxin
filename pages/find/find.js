@@ -45,10 +45,10 @@ function load(that) {
     })
   })
   //加载描述
-  request(app.api_host+'info.php?type=wxin_find_des', function (res) {
+  request(app.api_host+'info.php?type=get&name=wxin_find_des', function (res) {
     console.log('describe:', res)
     // console.log(JSON.stringify(res.data, ' ', ' '));
-    WxParse.wxParse('describe', 'html', res.data.list[0].content, that, 5);
+    WxParse.wxParse('describe', 'html', res.data.list[0].content_html, that, 5);
   })
 }
 

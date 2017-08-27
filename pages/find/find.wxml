@@ -7,10 +7,10 @@
 <view class="find-body">
   <block wx:for="{{list}}" wx:key="*id">
     <view class="list-bd" bindtap="bindViewTap" id="{{item.id}}">
-      <image class="find-pic" src="{{item.pic}}" mode="scaleToFill"></image>
+      <!-- <image class="find-pic" src="{{item.pic}}" mode="scaleToFill"></image> -->
       <view class="list-info">
         <view>{{item.title}}</view>
-        <view class="find-time">{{item.userid}}</view>
+        <view class="find-time">{{item.hits}}</view>
         <view class="find-time">{{item.dates}} </view>
       </view>
     </view>
