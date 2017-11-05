@@ -13,7 +13,7 @@
     <!--本站用户信息-->
     <view class="kind-list-item">
       <view id="1" class="kind-list-item-hd" bindtap="kindToggle">
-        <image class="headimag" src="{{user.head}}"></image>
+        <image class="headimag" src="{{user.avatar}}"></image>
         <view class="kind-list-text">{{user.username}}</view>
       </view>
     </view>

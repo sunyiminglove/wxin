@@ -21,7 +21,7 @@ Page({
 
   onShareAppMessage: function () {
     return {
-      title: 'www.smtvoice.com',
+      title: 'www.geek-iot.com',
       path: 'pages/device/switch/switch'
     }
   }
@@ -57,7 +57,7 @@ Page({
         icon: 'loading',
         duration: 10000
       })
-      myfunction.request(app.api_host+'device.php? device=switch&type=set&id=' + PageItems[e.currentTarget.id - 1].id + '&userid=' + app.user.username + '&password=' + app.user.password + '&cmd=' + cmd, function (res) {
+      myfunction.request(app.api_host+'wxin/device.php? device=switch&type=set&id=' + PageItems[e.currentTarget.id - 1].id + '&userid=' + app.user.userid + '&password=' + app.user.password + '&cmd=' + cmd, function (res) {
         console.log("控制开关后返回:", res);
 
         wx.showToast({
@@ -95,8 +95,8 @@ Page({
     this.setData({
       color: color
     });
-    console.log(app.api_host+'device.php? device=switch&type=set&id=8&userid=' + app.user.username + '&password=' + app.user.password + '&cmd=' + color)
-    myfunction.request(app.api_host+'device.php? device=switch&type=set&id=8&userid=' + app.user.username + '&password=' + app.user.password + '&cmd=' + color, function (res) {
+    console.log(app.api_host +'wxin/device.php? device=switch&type=set&id=8&userid=' + app.user.userid + '&password=' + app.user.password + '&cmd=' + color)
+    myfunction.request(app.api_host + 'wxin/device.php? device=switch&type=set&id=8&userid=' + app.user.userid + '&password=' + app.user.password + '&cmd=' + color, function (res) {
       console.log("控制开关后返回:", res);
     });
   }
@@ -112,7 +112,7 @@ function load(that) {
     })
   }
   else {
-    myfunction.request(app.api_host+'device.php?device=switch&type=getlist&userid=' + app.user.username + '&password=' + app.user.password, function (res) {
+    myfunction.request(app.api_host + 'wxin/device.php?device=switch&type=getlist&userid=' + app.user.userid + '&password=' + app.user.password, function (res) {
       PageItems = res.data.list;
       console.log('PageItems', PageItems)
       len = res.data.num; //重组PageItems 

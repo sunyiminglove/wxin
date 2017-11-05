@@ -6,7 +6,7 @@ list:[]
  },
   onShareAppMessage: function () {
     return {
-      title: 'www.smtvoice.com',
+      title: 'www.geek-iot.com',
       path: 'pages/device/pm/pm'
     }
   }
@@ -36,7 +36,7 @@ function load(that) {
     })
   }
   else {
-    myfunction.request(app.api_host+'device.php?device=sensor&type=getlist&sensor=pm2.5&userid=' + app.user.username + '&password=' + app.user.password, function (res) {
+    myfunction.request(app.api_host+'wxin/device.php?device=sensor&type=getlist&sensor=pm2.5&userid=' + app.user.userid + '&password=' + app.user.password, function (res) {
       var list = res.data.list;
      
       console.log('temperature', list)

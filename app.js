@@ -39,5 +39,5 @@ App({
     openid: null,//
     user:null//用户登陆信息
   },
-  api_host:'https://smtvoice.com/api/'//服务器api
+  api_host:'https://geek-iot.com/api/'//服务器api
 })

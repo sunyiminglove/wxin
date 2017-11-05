@@ -332,7 +332,7 @@ function updata(that, select) {
   that.setData({ select: select })
   if (app.user) {
     // 获取服务器数据
-  myfunction.request(app.api_host+'bluetooth/config.php?type=get&num='+select+'&userid=' + app.user.username,
+  myfunction.request(app.api_host+'wxin/bluetooth.php?type=get&num='+select+'&userid=' + app.user.userid,
     function (res) {//success
       var jsonArray =JSON.parse(res.data.item[0]);
       console.log('jsonArray', jsonArray);

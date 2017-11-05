@@ -143,7 +143,7 @@ Page({
     console.log('onUnload')
   if(app.user) {
        // 保存数据到服务器
-        myfunction.request(app.api_host+'bluetooth/config.php?type=set&num='+select+'&userid=' + app.user.username,
+        myfunction.request(app.api_host+'wxin/bluetooth.php?type=set&num='+select+'&userid=' + app.user.userid,
         function (res) {//success
           console.log('success:',res)
           wx.showToast({

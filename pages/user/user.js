@@ -99,9 +99,9 @@ function load(that) {
   })
   if (app.user)//登陆过
   {
-    myfunction.request(app.api_host+'login.php?username=' + app.user.username + '&password=' + app.user.password, function (res) {
+    myfunction.request(app.api_host+'login.php?email=' + app.user.email + '&password=' + app.user.password, function (res) {
       console.log(res)
-      if (res.data.status == 'success') {
+      if (res.data.resault == 'success') {
         console.log(res.data)
         that.setData({
           dis: false,
@@ -118,7 +118,7 @@ function load(that) {
       }
       else {
         wx.showToast({
-          title: res.data.error,
+          title: res.data.msg,
           icon: 'fail',
           duration: 2000
         })

@@ -3,7 +3,7 @@
   <text>注册</text>
 </view>
 <view class="content">
-  <input class="input" bindinput="bindKeyusername" placeholder="用户名" />
+  <input class="input" bindinput="bindKeynickname" placeholder="昵称" />
   <input class="input" bindinput="bindKeypassword" password="true" placeholder="密码" />
   <input class="input" bindinput="bindKeyconfirm" password="true" placeholder="确认密码" />
   <input class="input" bindinput="bindKeyemail" placeholder="注册邮箱" />

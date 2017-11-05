@@ -33,7 +33,7 @@ Page({
     console.log('news load options：', options)
     var id = options.id
     var that = this
-    request(app.api_host+'blog.php?id=' + id, function (res) {
+    request(app.api_host+'wxin/blog.php?id=' + id, function (res) {
       var data = res.data
       list = res.data
       //  console.log(JSON.stringify(res.data, ' ', ' '));

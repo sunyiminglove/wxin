@@ -36,7 +36,7 @@ Page({
 
 function load(that) {
   var that = that
-  request(app.api_host+'bloglist.php?type=find', function (res) {
+  request(app.api_host+'wxin/get.blog.list.php?type=find', function (res) {
     list = res.data.list
     console.log('diy：', list)
     //更新数据
@@ -45,7 +45,7 @@ function load(that) {
     })
   })
   //加载描述
-  request(app.api_host+'info.php?type=get&name=wxin_find_des', function (res) {
+  request(app.api_host+'wxin/info.php?type=get&name=wxin_find_des', function (res) {
     console.log('describe:', res)
     // console.log(JSON.stringify(res.data, ' ', ' '));
     WxParse.wxParse('describe', 'html', res.data.list[0].content_html, that, 5);

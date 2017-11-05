@@ -26,9 +26,9 @@ Page({
   bindload: function (e) {
     console.log('登陆按钮按下')
     var that = this
-    myfunction.request(app.api_host+'login.php?username=' + inputusername + '&password=' + inputpassword, function (res) {
+    myfunction.request(app.api_host+'user/login.php?email=' + inputusername + '&password=' + inputpassword, function (res) {
       console.log(res)
-      if (res.data.status == 'success') {
+      if (res.data.resault == 'success') {
         console.log(res.data)
         //保存用户数据到本地
         try {
@@ -47,7 +47,7 @@ Page({
       }
       else {
         wx.showToast({
-          title: res.data.error,
+          title: res.data.msg,
           icon: 'fail',
           duration: 2000
         })

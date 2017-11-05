@@ -7,7 +7,7 @@ Page({
 
   onShareAppMessage: function () {
     return {
-      title: 'www.smtvoice.com',
+      title: 'www.geek-iot.com',
       path: 'pages/device/device'
     }
   }
@@ -37,7 +37,7 @@ function load(that) {
     })
   }
   else {
-    myfunction.request(app.api_host+'device.php?device=sensor&type=getlist&sensor=gps&userid=' + app.user.username + '&password=' + app.user.password, function (res) {
+    myfunction.request(app.api_host + 'wxin/device.php?device=sensor&type=getlist&sensor=gps&userid=' + app.user.userid + '&password=' + app.user.password, function (res) {
       var jsonArray = [];
       for (var i = 0; i < res.data.num; i++) {
         var str = res.data.list[i].data
