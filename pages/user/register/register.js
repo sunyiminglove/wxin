@@ -1,6 +1,7 @@
 // pages/user/register/register.js
 var myfunction = require('../../../utils/myfunction');
-var inputusername = ''
+var app = getApp()
+var inputnickname = ''
 var inputpassword = ''
 var inputconfirm = ''
 var inputemail = ''
@@ -70,23 +71,23 @@ Page({
   }
   ,
   bindKeynickname: function (e) {
-    console.log('昵称', e)
+    // console.log('昵称', e)
     inputnickname = e.detail.value
   }
   ,
   bindKeypassword: function (e) {
-    console.log('密码', e)
+    // console.log('密码', e)
     inputpassword = e.detail.value
   }
   ,
   bindKeyconfirm: function (e) {
-    console.log('确认密码', e)
+    // console.log('确认密码', e)
     inputconfirm = e.detail.value
   }
 
   ,
   bindKeyemail: function (e) {
-    console.log('注册邮箱', e)
+    // console.log('注册邮箱', e)
     inputemail = e.detail.value
   }
 
@@ -113,7 +114,7 @@ Page({
       console.log(str)
       myfunction.request(str, function (res) {
         console.log(res)
-        if (res.data.result == 'ok') {
+        if (res.data.resault == 'success') {
           console.log(res.data)
           wx.showModal({
             title: '注册成功',
@@ -132,24 +133,11 @@ Page({
               }
             }
           })
-          // //保存用户数据到本地
-          // try {
-          //   //保存从服务器获取的用户数据
-          //   wx.setStorageSync('user', res.data)
-          //   app.user = res.data
-          //   console.log('已保存', app.user)
-          //   //切换到用户信息界面
-          //   wx.navigateBack({
-          //   })
-          // } catch (e) {
-          //   console.log('保存失败')
-          // }
-
         }
         else {
           wx.showModal({
             title: '注册失败',
-            content: res.data.error,
+            content: res.data.msg,
             success: function (res) {
               if (res.confirm) {
                 console.log('用户点击确定')
