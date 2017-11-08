@@ -31,6 +31,8 @@ Page({
         success: function(res) {
           if (res.confirm) {
             console.log('用户点击确定')
+            // 确定,跳转到登陆
+            wx.redirectTo({ url: '../../user/login/login' })
           } else if (res.cancel) {
             console.log('用户点击取消')
           }

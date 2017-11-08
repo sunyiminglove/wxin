@@ -14,8 +14,11 @@
     <view class="kind-list-item">
       <view id="1" class="kind-list-item-hd" bindtap="kindToggle">
         <image class="headimag" src="{{user.avatar}}"></image>
-        <view class="kind-list-text">{{user.username}}</view>
+        <view class="kind-list-text">{{user.nickname}}</view>
       </view>
+    </view>
+    <view class="kind-list-item">
+      <view class="info"> 用户ID：{{user.userid}}</view>
     </view>
     <view class="kind-list-item">
       <view class="info"> 手机号：{{user.phonenumber}}</view>

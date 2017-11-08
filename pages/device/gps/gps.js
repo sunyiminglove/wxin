@@ -30,10 +30,18 @@ Page({
 function load(that) {
   if (app.user == null) {
     //更新数据
-    wx.showToast({
-      title: '请先登录',
-      icon: 'info',
-      duration: 2000
+    wx.showModal({
+      title: '极客物联网',
+      content: '登陆后才能查看，请您先登录!',
+      success: function (res) {
+        if (res.confirm) {
+          // 确定,跳转到登陆
+          wx.redirectTo({ url: '../../user/login/login' })
+        } else if (res.cancel) {
+          // 取消,返回
+          wx.navigateBack({})
+        }
+      }
     })
   }
   else {

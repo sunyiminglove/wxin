@@ -99,7 +99,7 @@ function load(that) {
   })
   if (app.user)//登陆过
   {
-    myfunction.request(app.api_host+'login.php?email=' + app.user.email + '&password=' + app.user.password, function (res) {
+    myfunction.request(app.api_host+'/user/login.php?email=' + app.user.email + '&password=' + app.user.password, function (res) {
       console.log(res)
       if (res.data.resault == 'success') {
         console.log(res.data)

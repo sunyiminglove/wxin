@@ -52,21 +52,22 @@ Page({
         // PageItems[e.currentTarget.id - 1].icon = 'img/1.png'
         cmd = PageItems[e.currentTarget.id - 1].opencmd
       }
+      console.log('显示通信中');
       wx.showToast({
         title: '通信中...',
         icon: 'loading',
-        duration: 10000
+        duration: 5000
       })
       myfunction.request(app.api_host+'wxin/device.php? device=switch&type=set&id=' + PageItems[e.currentTarget.id - 1].id + '&userid=' + app.user.userid + '&password=' + app.user.password + '&cmd=' + cmd, function (res) {
         console.log("控制开关后返回:", res);
-
         wx.showToast({
           title: res.data.return,
           icon: 'info',
           duration: 1000
         })
         //  wx.hideToast()
-        if (res.data.return != '设备响应超时！' && res.data.return != '设备不在线！') {
+        console.log('res.data.return:',res.data.return);
+        if (res.data.resault == 'success') {
           if (PageItems[e.currentTarget.id - 1].icon == 'img/1.png') {
             PageItems[e.currentTarget.id - 1].icon = 'img/3.png'
           }
@@ -105,10 +106,18 @@ Page({
 function load(that) {
   if (app.user == null) {
     //更新数据
-    wx.showToast({
-      title: '请先登录',
-      icon: 'info',
-      duration: 2000
+    wx.showModal({
+      title: '极客物联网',
+      content: '登陆后才能查看，请您先登录!',
+      success: function (res) {
+        if (res.confirm) {
+          // 确定,跳转到登陆
+          wx.redirectTo({ url: '../../user/login/login' })
+        } else if (res.cancel) {
+          // 取消,返回
+          wx.navigateBack({})
+        }
+      }
     })
   }
   else {
