@@ -58,15 +58,17 @@ Page({
         icon: 'loading',
         duration: 5000
       })
-      var url = app.api_host + 'wxin/device.php?device=switch&type=set&id=' + PageItems[e.currentTarget.id - 1].id + '&userid=' + app.user.userid + '&password=' + app.user.password + '&cmd=' + cmd;
+      var url = app.api_host + 'wxin/device.php? device=switch&type=set&id=' + PageItems[e.currentTarget.id - 1].id + '&userid=' + app.user.userid + '&password=' + app.user.password + '&cmd=' + cmd;
+      console.log(url);
       myfunction.request(url, function (res) {
         console.log("控制开关后返回:", res);
         wx.showToast({
           title: res.data.return,
-          icon: 'success',
+          icon: 'warn',
           duration: 1000
         })
-        console.log('res.data.return:', res.data.return);
+        //  wx.hideToast()
+        console.log('res.data.return:',res.data.return);
         if (res.data.resault == 'success') {
           if (PageItems[e.currentTarget.id - 1].icon == 'img/1.png') {
             PageItems[e.currentTarget.id - 1].icon = 'img/3.png'
@@ -96,7 +98,7 @@ Page({
     this.setData({
       color: color
     });
-    console.log(app.api_host + 'wxin/device.php? device=switch&type=set&id=8&userid=' + app.user.userid + '&password=' + app.user.password + '&cmd=' + color)
+    console.log(app.api_host +'wxin/device.php? device=switch&type=set&id=8&userid=' + app.user.userid + '&password=' + app.user.password + '&cmd=' + color)
     myfunction.request(app.api_host + 'wxin/device.php? device=switch&type=set&id=8&userid=' + app.user.userid + '&password=' + app.user.password + '&cmd=' + color, function (res) {
       console.log("控制开关后返回:", res);
     });
