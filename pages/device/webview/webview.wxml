@@ -1,0 +1,4 @@
+<!--pages/device/webview/webview.wxml-->
+<!-- wxml -->
+<!-- 指向网站测试界面web-view -->
+<web-view src="https://geek-iot.com/wxin/index.php"></web-view>

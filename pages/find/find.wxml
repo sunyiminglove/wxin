@@ -1,6 +1,6 @@
 <!--find.wxml-->
-<!-- <web-view src="https://www.geek-iot.com/"></web-view> -->
-<import src="../../wxParse/wxParse.wxml" />
+ <!-- <web-view src="https://geek-iot.com/blog/index.php"></web-view>  -->
+ <import src="../../wxParse/wxParse.wxml" />
 
 <view class="find-text">
   <template is="wxParse" data="{{wxParseData:describe.nodes}}" />
@@ -8,7 +8,7 @@
 <view class="find-body">
   <block wx:for="{{list}}" wx:key="*id">
     <view class="list-bd" bindtap="bindViewTap" id="{{item.id}}">
-      <image class="find-pic" src="{{item.pic}}" mode="scaleToFill"></image>
+      <!-- <image class="find-pic" src="{{item.avarta}}" mode="scaleToFill"></image> -->
       <view class="list-info">
         <view>{{item.title}}</view>
         <view class="find-time">{{item.hits}}</view>
@@ -16,4 +16,4 @@
       </view>
     </view>
   </block>
-</view>
+</view> 

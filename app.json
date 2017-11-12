@@ -18,7 +18,8 @@
     "pages/device/bluetooth/bluetooth",
     "pages/device/bluetooth/control/control",
     "pages/device/bluetooth/set/set",
-    "pages/device/scan-code/scan-code"
+    "pages/device/scan-code/scan-code",
+    "pages/device/webview/webview"
   ],
   "window": {
     "enablePullDownRefresh": true,

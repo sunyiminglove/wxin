@@ -32,6 +32,10 @@
     <view class="kind-list-item">
       <view class="info">QQ：{{user.qq}}</view>
     </view>
+
+    <view class="kind-list-item">
+      <view class="info">版本：V5.3.2</view>
+    </view>
     <view class="kind-list-item" bindtap="bindlogout">
       <view class="logout"> 退出登陆 </view>
     </view>

@@ -58,8 +58,7 @@ Page({
         icon: 'loading',
         duration: 5000
       })
-      var url = app.api_host + 'wxin/device.php? device=switch&type=set&id=' + PageItems[e.currentTarget.id - 1].id + '&userid=' + app.user.userid + '&password=' + app.user.password + '&cmd=' + cmd;
-      url = url.trim();
+      var url = app.api_host + 'wxin/device.php?device=switch&type=set&id=' + PageItems[e.currentTarget.id - 1].id + '&userid=' + app.user.userid + '&password=' + app.user.password + '&cmd=' + cmd;
       console.log(url);
       myfunction.request(url, function (res) {
         console.log("控制开关后返回:", res);

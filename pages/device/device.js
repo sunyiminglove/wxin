@@ -39,6 +39,12 @@ Page({
         url: 'scan-code/scan-code',
         devicelist: {}
       }
+      , {
+        id: 'webview',
+        name: '测试页面',
+        url: 'webview/webview',
+        devicelist: {}
+      }
     ]
   },
   //点击进入相应界面
