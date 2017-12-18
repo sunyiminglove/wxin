@@ -1,11 +1,2 @@
-<view class="play-body">
-  <view class="play-title">{{list.title}} </view>
-  <view class="play-time">极客物联网:{{list.datetime}} </view>
-  <view class="play-time">浏览：{{list.hit}} </view>
-</view>
-<import src="../../../wxParse/wxParse.wxml" />
-<view class="play-body">
-  <view class="play-text">
-    <template is="wxParse" data="{{wxParseData:news.nodes}}" />
-  </view>
-</view>
+<!-- 指向网站测试界面web-view -->
+<web-view src="https://geek-iot.com/blog/view.php?id={{id}}"></web-view>
