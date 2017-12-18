@@ -9,3 +9,4 @@
     {{item.data}}
   </text>
 </view>
+<web-view src="https://geek-iot.com/wxin/device/temperature/index.html?data={{item.data}}"></web-view>
