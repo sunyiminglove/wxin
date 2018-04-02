@@ -1,4 +1,4 @@
-
+<web-view  class='ddd'  src="https://geek-iot.com/wxin/index/device.php"></web-view>
 <!--device.wxml-->
 <view class="index-hd">
   <!--<image class="index-logo" src="../../img/devicelogo.png"></image>-->

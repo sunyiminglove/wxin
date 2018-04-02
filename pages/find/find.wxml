@@ -1,3 +1,5 @@
+<web-view src="https://geek-iot.com/wxin/index/find.php"></web-view>
+
 <!--find.wxml-->
  <!-- <web-view src="https://geek-iot.com/blog/index.php"></web-view>  -->
  <import src="../../wxParse/wxParse.wxml" />

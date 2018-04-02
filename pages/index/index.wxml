@@ -1,4 +1,5 @@
 
+<web-view  class='ddd'  src="https://geek-iot.com/wxin/index/home.php"></web-view>
 <!--index.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
 <view class="index-content">

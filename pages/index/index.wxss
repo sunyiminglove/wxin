@@ -1,5 +1,10 @@
 /**index.wxss**/
-
+.ddd {
+  background-color: blue;
+  height: 50%;
+  /* padding-left: 28px;
+  padding-right: 28px; */
+}
 .index-content {
   padding-left: 28px;
   padding-right: 28px;

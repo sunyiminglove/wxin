@@ -22,7 +22,8 @@
     "pages/device/webview/webview"
   ],
   "window": {
-    "enablePullDownRefresh": true,
+    "disableScroll": true,
+    "enablePullDownRefresh": false,
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "极客物联网",
     "navigationBarBackgroundColor": "#F8F8F8",

@@ -1,3 +1,4 @@
+<web-view  class='ddd'  src="https://geek-iot.com/wxin/index/user.php"></web-view>
 <!--user.wxml-->
 <view wx:if="{{dis}}">
   <view class="ask">

@@ -31,11 +31,11 @@ Page({
     console.log('页面展示')
   },
   //下拉刷新
-  onPullDownRefresh: function () {
-    wx.stopPullDownRefresh()
-    var that = this
-    load(that)
-  },
+  // onPullDownRefresh: function () {
+  //   // wx.stopPullDownRefresh()
+  //   // var that = this
+  //   // load(that)
+  // },
   onLoad: function () {
     var that = this
     load(that)
